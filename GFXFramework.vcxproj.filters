@@ -124,6 +124,12 @@
     <ClCompile Include="C:\EGC\gfx-framework-master\src\utils\text_utils.cpp">
       <Filter>src\utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\lab_m1\Tema1\geometrics.cpp">
+      <Filter>src\lab_m1\Tema1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\lab_m1\Tema1\Tema1.cpp">
+      <Filter>src\lab_m1\Tema1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\EGC\gfx-framework-master\src\lab_extra\compute_shaders\shaders\ComputeShader.CS.glsl">
@@ -468,6 +474,15 @@
     <ClInclude Include="C:\EGC\gfx-framework-master\src\utils\window_utils.h">
       <Filter>src\utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\lab_m1\Tema1\Tema1.h">
+      <Filter>src\lab_m1\Tema1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\lab_m1\Tema1\transform2D.h">
+      <Filter>src\lab_m1\Tema1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\lab_m1\Tema1\geometrics.h">
+      <Filter>src\lab_m1\Tema1</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\EGC\gfx-framework-master\CMakeLists.txt" />
@@ -610,6 +625,9 @@
     </Filter>
     <Filter Include="src\utils">
       <UniqueIdentifier>{BF5C08EE-79D2-3638-B2DB-0FA3E535364F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lab_m1\Tema1">
+      <UniqueIdentifier>{5b2534d9-d379-4657-ac99-46b37450d8fb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

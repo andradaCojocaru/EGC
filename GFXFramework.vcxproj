@@ -120,7 +120,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>			</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/EGC/gfx-framework-master/deps/prebuilt/GL/x86_64/glew32.dll C:/EGC/gfx-framework-master/deps/prebuilt/GLFW/x86_64/glfw3.dll C:/EGC/gfx-framework-master/deps/prebuilt/assimp/x86_64/assimp.dll C:/EGC/gfx-framework-master/deps/prebuilt/spdlog/x86_64/spdlog.dll C:/EGC/gfx-framework-master/deps/prebuilt/freetype/x86_64/freetype.dll C:/EGC/gfx-framework-master/build/bin/Debug
 if %errorlevel% neq 0 goto :cmEnd
@@ -208,7 +209,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>			</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/EGC/gfx-framework-master/deps/prebuilt/GL/x86_64/glew32.dll C:/EGC/gfx-framework-master/deps/prebuilt/GLFW/x86_64/glfw3.dll C:/EGC/gfx-framework-master/deps/prebuilt/assimp/x86_64/assimp.dll C:/EGC/gfx-framework-master/deps/prebuilt/spdlog/x86_64/spdlog.dll C:/EGC/gfx-framework-master/deps/prebuilt/freetype/x86_64/freetype.dll C:/EGC/gfx-framework-master/build/bin/Release
 if %errorlevel% neq 0 goto :cmEnd
@@ -296,7 +298,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>			</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/EGC/gfx-framework-master/deps/prebuilt/GL/x86_64/glew32.dll C:/EGC/gfx-framework-master/deps/prebuilt/GLFW/x86_64/glfw3.dll C:/EGC/gfx-framework-master/deps/prebuilt/assimp/x86_64/assimp.dll C:/EGC/gfx-framework-master/deps/prebuilt/spdlog/x86_64/spdlog.dll C:/EGC/gfx-framework-master/deps/prebuilt/freetype/x86_64/freetype.dll C:/EGC/gfx-framework-master/build/bin/MinSizeRel
 if %errorlevel% neq 0 goto :cmEnd
@@ -383,7 +386,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>			</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/EGC/gfx-framework-master/deps/prebuilt/GL/x86_64/glew32.dll C:/EGC/gfx-framework-master/deps/prebuilt/GLFW/x86_64/glfw3.dll C:/EGC/gfx-framework-master/deps/prebuilt/assimp/x86_64/assimp.dll C:/EGC/gfx-framework-master/deps/prebuilt/spdlog/x86_64/spdlog.dll C:/EGC/gfx-framework-master/deps/prebuilt/freetype/x86_64/freetype.dll C:/EGC/gfx-framework-master/build/bin/RelWithDebInfo
 if %errorlevel% neq 0 goto :cmEnd
@@ -497,6 +501,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\lab_m1\Tema1\geometrics.cpp" />
+    <ClCompile Include="..\src\lab_m1\Tema1\Tema1.cpp" />
     <ClCompile Include="C:\EGC\gfx-framework-master\src\components\camera_input.cpp" />
     <ClCompile Include="C:\EGC\gfx-framework-master\src\components\scene_input.cpp" />
     <ClCompile Include="C:\EGC\gfx-framework-master\src\components\simple_scene.cpp" />
@@ -514,6 +520,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\EGC\gfx-framework-master\src\core\world.cpp" />
     <ClCompile Include="C:\EGC\gfx-framework-master\src\lab_extra\basic_text\basic_text.cpp" />
     <ClCompile Include="C:\EGC\gfx-framework-master\src\lab_extra\compute_shaders\compute_shaders.cpp" />
+    <ClInclude Include="..\src\lab_m1\Tema1\geometrics.h" />
+    <ClInclude Include="..\src\lab_m1\Tema1\Tema1.h" />
+    <ClInclude Include="..\src\lab_m1\Tema1\transform2D.h" />
     <ClInclude Include="C:\EGC\gfx-framework-master\src\lab_extra\compute_shaders\shaders\ComputeShader.CS.glsl" />
     <ClCompile Include="C:\EGC\gfx-framework-master\src\lab_extra\compute_shaders_ext\compute_shaders_ext.cpp" />
     <ClInclude Include="C:\EGC\gfx-framework-master\src\lab_extra\compute_shaders_ext\shaders\ComputeShader.CS.glsl" />
