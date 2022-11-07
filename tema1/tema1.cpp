@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <iostream>
+#include <string> 
+
 
 #include "lab_m1/Tema1/transform2D.h"
 #include "lab_m1/Tema1/geometrics.h"
@@ -29,12 +31,18 @@ Tema1::~Tema1()
 void Tema1::Init()
 {
     glm::ivec2 resolution = window->GetResolution();
+    tr = new gfxc::TextRenderer(window->props.selfDir, window->GetResolution().x, window->GetResolution().y);
+    tr->Load(window->props.selfDir + "\\assets\\fonts\\Hack-Bold.ttf", 128);
     auto camera = GetSceneCamera();
     camera->SetOrthographic(0, (float)resolution.x, 0, (float)resolution.y, 0.01f, 400);
     camera->SetPosition(glm::vec3(0, 0, 50));
     camera->SetRotation(glm::vec3(0, 0, 0));
     camera->Update();
     GetCameraInput()->SetActive(false);
+
+    if (randomDirection == 1) {
+        angle = 3 * angle;
+    }
 
     glm::vec3 corner = glm::vec3(0, 0, 0);
     glm::vec3 wingCorner = glm::vec3(0, 1, 1);
@@ -56,16 +64,16 @@ void Tema1::Init()
     // Initialize angularStep
     angularStep = 0;
 
-    Mesh* life = geometrics::CreateCircle("life", 0, 1, 15, glm::vec3(1, 0, 0), true);
+    Mesh* life = geometrics::CreateCircle("life", 0, 1, 10, glm::vec3(1, 0, 0), true);
     AddMeshToList(life);
 
     Mesh* bullet = geometrics::CreateRectangle("bullet", corner, 10, glm::vec3(0.412f, 0.412f, 0.412f), 1, false);
     AddMeshToList(bullet);
 
-    Mesh* score = geometrics::CreateRectangle("score", corner, 100, glm::vec3(0.412f, 0.412f, 0.412f), 1.5, false);
+    Mesh* score = geometrics::CreateRectangle("score", corner, 100, glm::vec3(0.412f, 0.412f, 0.412f), 5, false);
     AddMeshToList(score);
 
-    Mesh* score_point = geometrics::CreateRectangle("score_point", corner, 1, glm::vec3(0, 0.749f, 1), 1.5, true);
+    Mesh* score_point = geometrics::CreateRectangle("score_point", corner, 1, glm::vec3(0, 0.749f, 1), 5, true);
     AddMeshToList(score_point);
 
     Mesh* eye_black = geometrics::CreateCircle("eye_black", 0, 1, 3, glm::vec3(0, 0, 0), true);
@@ -74,7 +82,7 @@ void Tema1::Init()
     Mesh* eye_white = geometrics::CreateCircle("eye_white", 0, 1, 8, glm::vec3(1, 1, 1), true);
     AddMeshToList(eye_white);
 
-    Mesh* grass = geometrics::CreateRectangle("grass", corner, 330, glm::vec3(0, 0.39f, 0), 2, true);
+    Mesh* grass = geometrics::CreateRectangle("grass", corner, 1400, glm::vec3(0, 0.39f, 0), 10, true);
     AddMeshToList(grass);
 
     Mesh* body = geometrics::CreateTriangle("body", corner, 50, glm::vec3(0.54, 0.27, 0.078), true);
@@ -167,9 +175,9 @@ void Tema1::CreateDuck()
 
     modelMatrix *= transform2D::Translate(centerX - 160, centerY - 10);
 
-    modelMatrix *= transform2D::Translate(centerX + 40, centerY + 40);
+    modelMatrix *= transform2D::Translate(square / 2, square / 2);
     modelMatrix *= transform2D::Rotate(M_PI_2 + angularStep);
-    modelMatrix *= transform2D::Translate(-centerX - 40, -centerY - 40);
+    modelMatrix *= transform2D::Translate(-square / 2, -square / 2);
 
     RenderMesh2D(meshes["wing_up"], shaders["VertexColor"], modelMatrix);
 
@@ -213,9 +221,6 @@ void Tema1::RenderDuck()
 
         modelMatrix *= transform2D::Translate(transltateBulletX, translateBulletY);
 
-        modelMatrix *= transform2D::Translate(centerX, centerY);
-        modelMatrix *= transform2D::Rotate(M_PI_2);
-        modelMatrix *= transform2D::Translate(-centerX, -centerY);
         RenderMesh2D(meshes["bullet"], shaders["VertexColor"], modelMatrix);
     }
 
@@ -310,18 +315,20 @@ void Tema1::Update(float deltaTimeSeconds)
         translateY = 0;
         angle = M_PI_4;
         dead = 0;
-        escape = 0;
         time = 0;
+        escape = 0;
         bullets = 3;
         timeOutside = 0;
         number_Ducks++;
-    }
-
-    if (number_Ducks % 5 == 0) {
-        speed = speed_Initial + (number_Ducks / 5) * speed_Initial / 5;
+        isHit = 0;
+        randomDirection = rand() % 2;
+        if (randomDirection == 1) {
+            angle = 3 * angle;
+        }
     }
     
-    
+    string levelName = "Level " + to_string(level);
+    tr->RenderText(levelName, 500, 50, 0.3);
 }
 
 
@@ -401,9 +408,12 @@ void Tema1::OnMouseBtnPress(int mouseX, int mouseY, int button, int mods)
         bullets--;
     }
 
-
-    //cout << clickX << " " << clickY << "\n";
-    
+    if (number_Ducks % 5 == 0) {
+        speed = speed_Initial + (number_Ducks / 5) * speed_Initial / 5;
+        level++;
+        score = 0;
+        lifes = 3;
+    }
 }
 
 
@@ -421,4 +431,3 @@ void Tema1::OnMouseScroll(int mouseX, int mouseY, int offsetX, int offsetY)
 void Tema1::OnWindowResize(int width, int height)
 {
 }
-
