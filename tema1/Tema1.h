@@ -1,6 +1,7 @@
 #pragma once
 
 #include "components/simple_scene.h"
+#include "components/text_renderer.h"
 
 
 namespace m1
@@ -50,7 +51,7 @@ namespace m1
         float timeOutside = 0;
         bool escape = 0;
         bool dead = 0;
-        int centerX = 10;
+        int centerX = 200 + rand() % 900;
         int centerY = 10;
         int isHit = 0;
 
@@ -59,6 +60,8 @@ namespace m1
         int number_Ducks = 1;
         int score = 0;
         float angle = M_PI_4;
+        int randomDirection = rand() % 2;
+        //float angle = (rand() % RAND_MAX) * M_PI_2;
         //float angle = 0;
 
         int clickX;
@@ -66,8 +69,11 @@ namespace m1
 
         int height;
         int width;
+        int level = 1;
 
         glm::vec3 hitBoxLow = glm::vec3(0, 0, 1);
+        gfxc::TextRenderer* tr;
+        
         // TODO(student): If you need any other class variables, define them here.
 
     };
